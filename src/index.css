@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Royal Heritage Palette */
+    --background: 40 30% 98%;
+    --foreground: 350 20% 15%;
+
+    --card: 40 25% 96%;
+    --card-foreground: 350 20% 15%;
+
+    --popover: 40 30% 98%;
+    --popover-foreground: 350 20% 15%;
+
+    --primary: 350 70% 25%;
+    --primary-foreground: 40 30% 98%;
+
+    --secondary: 40 25% 93%;
+    --secondary-foreground: 350 20% 15%;
+
+    --muted: 40 20% 94%;
+    --muted-foreground: 350 10% 45%;
+
+    --accent: 45 50% 60%;
+    --accent-foreground: 350 20% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 45 50% 60%;
+
+    --radius: 0.5rem;
+
+    /* Wedding Custom Tokens */
+    --gold: 45 50% 60%;
+    --gold-light: 45 55% 75%;
+    --gold-dark: 45 45% 45%;
+    --maroon: 350 70% 25%;
+    --maroon-light: 350 60% 35%;
+    --maroon-dark: 350 75% 18%;
+    --cream: 40 30% 98%;
+    --cream-dark: 40 25% 93%;
+    --haldi: 45 85% 55%;
+    --mehendi: 140 45% 30%;
+    --sangeet: 280 50% 35%;
+    --reception: 25 75% 45%;
+
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+
+    --ease-royal: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --shadow-gold: 0 4px 30px -5px hsl(45 50% 60% / 0.3);
+    --shadow-deep: 0 10px 40px -10px hsl(350 70% 25% / 0.2);
+    --gradient-gold: linear-gradient(135deg, hsl(45 55% 75%), hsl(45 50% 60%), hsl(45 45% 45%));
+    --gradient-maroon: linear-gradient(135deg, hsl(350 60% 35%), hsl(350 70% 25%));
+    --gradient-overlay: linear-gradient(180deg, hsl(350 70% 25% / 0.8), hsl(350 75% 18% / 0.9));
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+
+  .text-maroon {
+    color: hsl(var(--maroon));
+  }
+
+  .bg-gold {
+    background-color: hsl(var(--gold));
+  }
+
+  .bg-maroon {
+    background-color: hsl(var(--maroon));
+  }
+
+  .bg-cream {
+    background-color: hsl(var(--cream));
+  }
+
+  .bg-cream-dark {
+    background-color: hsl(var(--cream-dark));
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .gradient-maroon {
+    background: var(--gradient-maroon);
+  }
+
+  .gradient-overlay {
+    background: var(--gradient-overlay);
+  }
+
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+
+  .shadow-deep {
+    box-shadow: var(--shadow-deep);
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  .border-maroon {
+    border-color: hsl(var(--maroon));
+  }
+
+  /* Gold shimmer animation */
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--gold-dark)) 0%,
+      hsl(var(--gold-light)) 50%,
+      hsl(var(--gold-dark)) 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0%, 100% { background-position: -200% 0; }
+    50% { background-position: 200% 0; }
+  }
+
+  /* Ornamental divider */
+  .ornament-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ornament-divider::before,
+  .ornament-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+  }
+
+  /* Mandala spin */
+  .mandala-spin {
+    animation: mandalaSpin 60s linear infinite;
+  }
+
+  @keyframes mandalaSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  /* Floating animation */
+  .float-gentle {
+    animation: floatGentle 6s ease-in-out infinite;
+  }
+
+  @keyframes floatGentle {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Event color classes */
+  .event-haldi { border-left-color: hsl(var(--haldi)); }
+  .event-mehendi { border-left-color: hsl(var(--mehendi)); }
+  .event-sangeet { border-left-color: hsl(var(--sangeet)); }
+  .event-wedding { border-left-color: hsl(var(--maroon)); }
+  .event-reception { border-left-color: hsl(var(--reception)); }
+
+  .event-haldi .event-dot { background-color: hsl(var(--haldi)); }
+  .event-mehendi .event-dot { background-color: hsl(var(--mehendi)); }
+  .event-sangeet .event-dot { background-color: hsl(var(--sangeet)); }
+  .event-wedding .event-dot { background-color: hsl(var(--maroon)); }
+  .event-reception .event-dot { background-color: hsl(var(--reception)); }
+
+  /* Flip clock */
+  .flip-card {
+    perspective: 400px;
+  }
+
+  .flip-card-inner {
+    transition: transform 0.6s var(--ease-royal);
+    transform-style: preserve-3d;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-16 md:py-24 px-4 md:px-8;
+  }
+
+  /* Scroll fade */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s var(--ease-royal);
+  }
+
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
